@@ -1,4 +1,4 @@
-# Simple k6 Performance Testing Project
+# k6 Performance Testing Project
 
 ## Introduction
 
