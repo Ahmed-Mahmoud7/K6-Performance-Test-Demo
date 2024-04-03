@@ -15,5 +15,5 @@ Before you start, ensure you have the following installed on your system:
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/simple-k6-js-project.git
-cd simple-k6-js-project
+git clone https://github.com/Ahmed-Mahmoud7/K6-Performance-Test-Demo.git
+cd K6-Performance-Test-Demo
