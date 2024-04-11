@@ -1,0 +1,17 @@
+name: K6 Performance Test
+
+on: [push, pull_request]
+
+jobs:
+  performance-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up k6
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y k6
+    - name: Run k6 tests
+      run: |
+        k6 run API/PUT_Request.js
