@@ -1,5 +1,14 @@
 import http from 'k6/http';
-import { sleep, group, check } from 'k6';
+import {sleep, group, check} from 'k6';
+import {htmlReport} from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
+import {textSummary} from "https://jslib.k6.io/k6-summary/0.0.1/index.js";
+
+export function handleSummary(data) {
+    return {
+        stdout: textSummary(data, {indent: " ", enableColors: true}),
+        "result.html": htmlReport(data),
+    };
+}
 
 export const options = {
     thresholds: {
@@ -14,7 +23,7 @@ export default function () {
 
     group('Main page', function () {
         let res = http.get('https://run.mocky.io/v3/1e885f08-e094-49c4-952b-b20c978e199f?mocky-delay=5000ms');
-        check(res, { 'status is 200': (r) => r.status === 200 });
+        check(res, {'status is 200': (r) => r.status === 200});
 
         group('Assets', function () {
             http.get('https://run.mocky.io/v3/1e885f08-e094-49c4-952b-b20c978e199f?mocky-delay=1000ms');
